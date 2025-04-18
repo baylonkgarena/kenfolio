@@ -1,0 +1,20 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Slide from left to right Animation */
+@keyframes slideInLeftToRight {
+  0% {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideInLeftToRight 1.5s ease-out forwards;
+}
