@@ -38,3 +38,11 @@ html {
 .animate-click {
   animation: buttonClickAnimation 0.3s ease-in-out; /* 0.3s animation duration */
 }
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
