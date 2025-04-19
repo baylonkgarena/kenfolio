@@ -1,90 +1,97 @@
-   * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column; /* Make the body column-based for the button and content */
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
 
-    /* Go Back Button Style */
-    .go-back-button {
-      position: absolute; /* Position the button absolutely */
-      top: 20px; /* Align it to the top with the container */
-      left: 20px; /* Align it to the left side of the page */
-      padding: 10px 20px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      text-align: center;
-    }
+/* Go Back Button Style */
+.go-back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
 
-    .go-back-button:hover {
-      background-color: #2980b9;
-    }
+.go-back-button:hover {
+  background-color: #2980b9;
+}
 
-    .container {
-      display: flex;
-      width: 90%;
-      max-width: 1000px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      margin-top: 20px; /* Add space for the go-back button */
-    }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  max-width: 1200px; /* Increased max width for larger display */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 80px; /* Increased for breathing room under button */
+}
 
-    .left-section, .right-section {
-      padding: 20px;
-      flex: 1;
-    }
+/* Responsive sections */
+.left-section, .right-section {
+  padding: 20px;
+  flex: 1 1 500px; /* Flexible width with min width for responsiveness */
+}
 
-    .carousel-container {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #fff;
-    }
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+}
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.3s ease;
-      cursor: grab;
-    }
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
 
-    .carousel-slide {
-      min-width: 100%;
-      user-select: none;
-    }
+.carousel-slide {
+  min-width: 100%;
+  user-select: none;
+}
 
-    .carousel-slide img {
-      width: 100%;
-      display: block;
-    }
+.carousel-slide img {
+  width: 100%;
+  height: 400px; /* Fixed height for consistent image size */
+  object-fit: cover; /* Ensures all images are cropped to fill the container */
+  display: block;
+  border-radius: 10px;
+}
 
-    .project-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+.project-title {
+  font-size: 28px; /* Slightly larger title */
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
 
-    .description {
-      font-size: 16px;
-      line-height: 1.5;
-    }
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+}
 
-    /* For desktop */
-    @media (min-width: 768px) {
-      .carousel-container {
-        max-width: 1200px; /* Adjust max-width for desktop view */
-      }
-    }
+/* Responsive tweaks for larger screens */
+@media (min-width: 768px) {
+  .carousel-container {
+    max-width: 100%;
+  }
+}

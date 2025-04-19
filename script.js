@@ -1,68 +1,88 @@
-// Navigation bar Active status
+// Navigation bar Active status + Update URL hash on scroll
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
-  let current = "";
+// Debounce function to limit scroll event calls
+function debounce(func, wait = 20, immediate = false) {
+  let timeout;
+  return function () {
+    const context = this,
+      args = arguments;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+// Scroll handler to update nav link and URL hash
+function handleScroll() {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  let currentSection = "";
 
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-      current = section.getAttribute("id");
+    const sectionHeight = section.offsetHeight;
+
+    if (
+      window.scrollY >= sectionTop - sectionHeight / 2 &&
+      window.scrollY < sectionTop + sectionHeight - sectionHeight / 2
+    ) {
+      currentSection = section.getAttribute("id");
     }
   });
 
+  // Update URL hash without reload
+  if (currentSection && window.location.hash !== `#${currentSection}`) {
+    window.history.pushState(null, null, `#${currentSection}`);
+  }
+
+  // Highlight the current nav link
   navLinks.forEach(link => {
     link.classList.remove("text-blue-500", "border-b-2");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("text-blue-500"); // Added only the color change, no underline.
+    if (link.getAttribute("href") === `#${currentSection}`) {
+      link.classList.add("text-blue-500", "border-b-2");
     }
   });
-});
+}
+
+// Attach debounced scroll listener
+window.addEventListener("scroll", debounce(handleScroll));
 
 
-// Sending Email
+// Send Email Function
 function sendEmail() {
   window.open("mailto:kenzbaylon@gmail.com", "_blank");
 }
 
-
-// Refresh website
+// Force refresh to #home section on load
 window.addEventListener("load", () => {
   if (window.location.hash !== "#home") {
     window.location.replace(window.location.origin + window.location.pathname + "#home");
   }
 });
 
+// Function to animate the email button click
+function animateEmailButtonClick() {
+  const emailButton = document.querySelector("button.mt-4"); // This selects the button with the class 'mt-4'
 
-// Function to update the active link and change the URL hash based on scroll position
-  window.addEventListener("scroll", () => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+  // Add the animation class to the button
+  emailButton.classList.add("animate-click");
 
-    let currentSection = "";
-
-    // Determine which section is currently in the viewport
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (window.scrollY >= sectionTop - sectionHeight / 2 && window.scrollY < sectionTop + sectionHeight - sectionHeight / 2) {
-        currentSection = section.getAttribute("id");
-      }
-    });
-
-    // Update the URL hash without reloading the page
-    if (currentSection && window.location.hash !== `#${currentSection}`) {
-      window.history.pushState(null, null, `#${currentSection}`);
-    }
-
-    // Highlight the active link based on the section in view
-    navLinks.forEach(link => {
-      link.classList.remove("text-blue-500", "border-b-2");
-      if (link.getAttribute("href") === `#${currentSection}`) {
-        link.classList.add("text-blue-500", "border-b-2");
-      }
-    });
+  // Remove the animation class after the animation ends
+  emailButton.addEventListener("animationend", () => {
+    emailButton.classList.remove("animate-click");
   });
+}
+
+// Modify the existing sendEmail function to call the animation function
+function sendEmail() {
+  animateEmailButtonClick(); // Trigger the animation when the button is clicked
+  window.open("mailto:kenzbaylon@gmail.com", "_blank"); // Open the email client
+}
