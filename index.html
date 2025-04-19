@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kenneth Z Baylon | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  </head>
-  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenneth Z Baylon | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body class="font-['Roboto'] bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] text-white overflow-x-hidden">
 
   <!-- Header -->
-<header class="bg-white text-black px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-  <div class="text-2xl font-bold">PORTFOLIO</div>
+  <header class="bg-white text-black px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold">PORTFOLIO</div>
 
-  <!-- Desktop Navigation (Hidden on small screens) -->
-  <nav class="space-x-4 text-sm hidden sm:block"> <!-- Hide on small screens -->
-    <a href="#home" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">HOME</a>
-    <a href="#about" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">ABOUT</a>
-    <a href="#experience" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">EXPERIENCE</a>
-    <a href="#projects" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">PROJECTS</a>
-    <a href="#contact" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">CONTACT</a>
-  </nav>
+    <!-- Desktop Navigation (Hidden on small screens) -->
+    <nav class="space-x-4 text-sm hidden sm:block"> <!-- Hide on small screens -->
+      <a href="#home" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">HOME</a>
+      <a href="#about" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">ABOUT</a>
+      <a href="#experience" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">EXPERIENCE</a>
+      <a href="#projects" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">PROJECTS</a>
+      <a href="#contact" class="hover:text-blue-500 hover:border-b-2 border-white font-bold">CONTACT</a>
+    </nav>
 
-  <!-- Mobile Navigation Toggle (Hamburger Icon) -->
-  <div class="sm:hidden flex items-center">
-    <button class="text-2xl" id="mobile-menu-button">&#9776;</button> <!-- Hamburger Icon -->
+    <!-- Mobile Navigation Toggle (Hamburger Icon) -->
+    <div class="sm:hidden flex items-center">
+      <button class="text-2xl" id="mobile-menu-button">&#9776;</button> <!-- Hamburger Icon -->
+    </div>
+  </header>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div id="mobile-menu" class="sm:hidden absolute top-0 right-0 bg-white text-black w-48 h-screen flex flex-col items-center justify-center space-y-6 hidden">
+    <a href="#home" class="hover:text-blue-500">HOME</a>
+    <a href="#about" class="hover:text-blue-500">ABOUT</a>
+    <a href="#experience" class="hover:text-blue-500">EXPERIENCE</a>
+    <a href="#projects" class="hover:text-blue-500">PROJECTS</a>
+    <a href="#contact" class="hover:text-blue-500">CONTACT</a>
   </div>
-</header>
 
-<!-- Mobile Menu (Hidden by default) -->
-<div id="mobile-menu" class="sm:hidden absolute top-0 right-0 bg-white text-black w-48 h-screen flex flex-col items-center justify-center space-y-6 hidden">
-  <a href="#home" class="hover:text-blue-500">HOME</a>
-  <a href="#about" class="hover:text-blue-500">ABOUT</a>
-  <a href="#experience" class="hover:text-blue-500">EXPERIENCE</a>
-  <a href="#projects" class="hover:text-blue-500">PROJECTS</a>
-  <a href="#contact" class="hover:text-blue-500">CONTACT</a>
-</div>
-
-<script>
-  // Toggle the mobile menu visibility
-  document.getElementById("mobile-menu-button").addEventListener("click", () => {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.toggle("hidden"); // Toggle 'hidden' class
-  });
-</script>
+  <script>
+    // Toggle the mobile menu visibility
+    document.getElementById("mobile-menu-button").addEventListener("click", () => {
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenu.classList.toggle("hidden"); // Toggle 'hidden' class
+    });
+  </script>
 
 
   <!-- Home Section -->

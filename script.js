@@ -21,9 +21,6 @@ function debounce(func, wait = 20, immediate = false) {
 
 // Scroll handler to update nav link and URL hash
 function handleScroll() {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll("nav a");
-
   let currentSection = "";
 
   sections.forEach(section => {
@@ -55,18 +52,11 @@ function handleScroll() {
 // Attach debounced scroll listener
 window.addEventListener("scroll", debounce(handleScroll));
 
-
 // Send Email Function
 function sendEmail() {
-  window.open("mailto:kenzbaylon@gmail.com", "_blank");
+  animateEmailButtonClick(); // Trigger the animation
+  window.open("mailto:kenzbaylon@gmail.com", "_blank"); // Open the email client
 }
-
-// Force refresh to #home section on load
-window.addEventListener("load", () => {
-  if (window.location.hash !== "#home") {
-    window.location.replace(window.location.origin + window.location.pathname + "#home");
-  }
-});
 
 // Function to animate the email button click
 function animateEmailButtonClick() {
@@ -81,8 +71,9 @@ function animateEmailButtonClick() {
   });
 }
 
-// Modify the existing sendEmail function to call the animation function
-function sendEmail() {
-  animateEmailButtonClick(); // Trigger the animation when the button is clicked
-  window.open("mailto:kenzbaylon@gmail.com", "_blank"); // Open the email client
-}
+// Force refresh to #home section on load
+window.addEventListener("load", () => {
+  if (window.location.hash !== "#home") {
+    window.location.replace(window.location.origin + window.location.pathname + "#home");
+  }
+});
